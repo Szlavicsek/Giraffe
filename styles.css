@@ -1,13 +1,6 @@
 :root {
   --anim-duration: 1s;
-  --anim-horn: 0.5s;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  --anim-horn: 0.4s;
 }
 
 *::selection {
@@ -23,6 +16,8 @@ body {
   position: relative;
   -webkit-backface-visibility: hidden;
   z-index: 1;
+  margin: 0;
+  padding: 0
 }
 
 body:after {
@@ -36,34 +31,10 @@ body:after {
   opacity: 0;
 }
 
-.spinner {
-  opacity: 0;
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  z-index: 20;
-  transform: translate(-50%, -50%);
-  border-top: 3px solid orange;
-  border-bottom: 3px solid orange;
-  border-radius: 50%;
-  animation: tade 3s linear infinite;
-}
-
-@keyframes tade {
-  0% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-}
-
 button {
   position: absolute;
-  left: 50%;
   top: 50px;
+  left: 50%;
   transform: translate(-50%);
   -ms-transform: translate(-50%);
   outline: 0;
@@ -73,15 +44,15 @@ button {
   height: 60px;
   background-color: #F3C668;
   cursor: pointer;
-  /* box-shadow: 0px 7px 20px rgba(0, 0, 0, 0.5);
-  animation: top 2s ease, button-loop 4s ease-in-out infinite;
-  animation-delay: 0.5s button-loop;
-  transition: 0.2s ease box-shadow; */
-  z-index: 5
+  z-index: 5;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  animation: top 1s ease;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+  transition: 0.2s ease all;
 }
 
 button:hover {
-  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 button:active {
@@ -103,12 +74,12 @@ button::selection {
 
 .giraffe {
   position: absolute;
-  bottom: 0;
-  height: 350px;
-  width: 200px;
+  bottom: -450px;
+  height: 340px;
+  width: 150px;
   left: 35%;
   transform-origin: bottom;
-  transform: scale(1.2);
+  transform: scale(1.25);
   z-index: 10
 }
 
@@ -126,23 +97,6 @@ button::selection {
   left: 70px;
   z-index: 5;
 }
-
-/* .eyes {
-  position: absolute;
-  width: 8px;
-  z-index: 20;
-  opacity: 0
-}
-
-#right-eye {
-  left: 100px;
-  top: 35px;
-}
-
-#left-eye {
-  left: 88px;
-  top: 35px;
-} */
 
 .visible {
   opacity: 1
@@ -196,7 +150,7 @@ button::selection {
   -moz-animation: horn var(--anim-horn);
   -webkit-animation: horn var(--anim-horn);
   animation: horn var(--anim-horn);
-  animation-delay: 0.5s;
+  animation-delay: 0.6s;
 }
 
 .giraffe-horn2 {
@@ -232,13 +186,13 @@ button::selection {
 
 @keyframes bounce {
   0% {
-    transform: translateY(450px) scale(1.2);
+    transform: translateY(450px) scale(1.25);
   }
   70% {
-    transform: translateY(-10px) scale(1.2);
+    transform: translateY(-10px)scale(1.25);
   }
   100% {
-    transform: translateY(0px) scale(1.2);
+    transform: translateY(0px) scale(1.25);
   }
 }
 
@@ -259,10 +213,10 @@ button::selection {
 
 @keyframes bounce-reverse {
   20% {
-    transform: translateY(-10px) scale(1.2);
+    transform: translateY(-10px) scale(1.25);
   }
   100% {
-    transform: translateY(450px) scale(1.2);
+    transform: translateY(450px) scale(1.25);
   }
 }
 
@@ -280,18 +234,16 @@ button::selection {
 
 @keyframes horn {
   0% {
-    /* transform: translateY(-35px); */
     top: 35px;
   }
   70% {
     transform: scale(1.4);
   }
   85% {
-    transform: scale(0.9);
+    top: 25px transform: scale(0.85);
   }
   100% {
     top: 20px;
-    /* transform: translateY(-18px) scale(1); */
     transform: scale(1);
   }
 }
@@ -326,22 +278,12 @@ button::selection {
     transform: rotateZ(-10deg)
   }
   30% {
-    top: 32px;
-    /* left: 70px;
-    top: 20px; */
-    /* transform-origin: right; */
     transform: rotateZ(-40deg)
   }
   80% {
-    /* left: 62px;
-    top: 35px; */
-    /* transform-origin: right; */
     transform: rotateZ(10deg)
   }
   100% {
-    /* left: 62px;
-    top: 40px; */
-    /* transform-origin: right; */
     transform: rotateZ(0deg)
   }
 }
@@ -379,10 +321,12 @@ button::selection {
 
 @keyframes top {
   from {
-    top: -100px;
+    transform: translate(-50%, -120px);
+    /* top: -100px; */
   }
   to {
-    top: 50px
+    transform: translate(-50%, 0px);
+    /* top: 50px */
   }
 }
 
@@ -398,7 +342,6 @@ button::selection {
   }
 }
 
-/*
 .-chevron {
   height: 60px;
 }
@@ -442,7 +385,6 @@ button::selection {
   transition: transform 0.15s linear 0.3s;
 }
 
-
 .-chevron span:nth-of-type(3) {
   left: 0;
   transform-origin: bottom;
@@ -483,4 +425,16 @@ button::selection {
   transform-origin: right;
   transform: scale3d(1, 1, 1);
   transition: transform 0.15s linear 0.3s;
-} */
+}
+
+@media only screen and (min-width: 577px) {
+  .giraffe {
+    left: 40%
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .giraffe {
+    left: 45%
+  }
+}
